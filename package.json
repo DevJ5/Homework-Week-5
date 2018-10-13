@@ -4,12 +4,13 @@
   "main": "index.js",
   "author": "DevJ5 <36604614+DevJ5@users.noreply.github.com>",
   "license": "MIT",
-  "scripts" : {
-    "start" : "node ."
+  "scripts": {
+    "start": "node ."
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.3.0",
     "pg": "^7.5.0",
     "sequelize": "^4.39.0"
   }
