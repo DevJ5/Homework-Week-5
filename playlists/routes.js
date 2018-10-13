@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const Playlist = require('./model');
-const User = require('../users/model');
 const Song = require('../songs/model');
 
 const router = new Router();
@@ -16,13 +15,9 @@ router.get('/playlists', (req, res, next) => {
 });
 
 router.get('/playlists/:id', (req, res, next) => {
-  Playlist.findById(req.params.id, {
-    where: {
-      userId: req.user.id
-    }
-  })
+  Playlist.findById(req.params.id)
     .then(playlist => {
-      if (playlist) {
+      if (playlist && playlist.userId === req.user.id) {
         return Song.findAll({
           where: {
             playlistId: playlist.id
@@ -52,11 +47,7 @@ router.post('/playlists', (req, res, next) => {
 });
 
 router.delete('/playlists/:id', (req, res, next) => {
-  Playlist.findById(req.params.id, {
-    where: {
-      userId: req.user.id
-    }
-  })
+  Playlist.findById(req.params.id)
     .then(playlist => {
       if (playlist && playlist.userId === req.user.id) {
         return playlist
