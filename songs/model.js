@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../db');
+const Playlist = require('../playlists/model');
 
 const Song = sequelize.define(
   'songs',
@@ -20,7 +21,7 @@ const Song = sequelize.define(
       allowNull: false
     },
     playlistId: {
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
       field: 'playlist_id',
       allowNull: false
     }
@@ -30,5 +31,7 @@ const Song = sequelize.define(
     tableName: 'songs'
   }
 );
+
+Song.belongsTo(Playlist);
 
 module.exports = Song;
