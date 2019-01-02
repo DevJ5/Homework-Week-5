@@ -1,5 +1,6 @@
-# Homework-Week-5
+# Sequelize playlist API
 
-# Yarn install
-
-# Yarn start
+``` bash
+yarn install
+yarn start
+```
